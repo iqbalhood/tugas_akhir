@@ -1,20 +1,27 @@
 <?php
-// include db connect class
-require_once '../../config/db_connect.php';
-
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "perpustakaan";
 $pass = md5($_POST['user_password']);
 
-// ckonekin ke db
-$db = new DB_CONNECT();
-	 
-	//  get by event
-	$result = mysql_query("SELECT nip, password from pengguna WHERE nip='".$_POST['user_username']."' && password='".$pass."'") or die(mysql_error());
-		// cek
-		if (mysql_num_rows($result) > 0) {
-            echo "correct";
-		}else { 
-            echo 'wrong';
-		}
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
 
+$sql = "SELECT nip, password from pengguna WHERE nip='".$_POST['user_username']."' && password='".$pass."'";
+$result = $conn->query($sql);
 
+if ($result->num_rows > 0) {
+	echo "correct";
+} else {
+    echo "wrong";
+}
+$conn->close();
 ?>
+
+
+

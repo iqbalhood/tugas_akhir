@@ -1,68 +1,73 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="../angular/angular.min.js"></script>
-    <script src="../angular/angular-cookies.js"></script>
-    <title>Admin Perumahan</title> 
-  </head>
-  <body ng-app="AngularJSLogin" ng-controller="AngularLoginController as angCtrl">
-      <div class="container mt-4 ">
-        <!--  Start Form Login  -->
-        <form name="login" ng-submit="angCtrl.loginForm()" class="form-horizontal" method="POST">
-            <div class="form-group">
-              <label for="InputNIP">NIP</label>
-              <input type="text"  class="form-control" id="inputNIP" placeholder="Masukkan NIP" ng-model="angCtrl.inputData.nip">      
-            </div>
-            <div class="form-group">
-              <label for="InputPassword">Password</label>
-              <input type="password" class="form-control" id="inputPassword" placeholder="Masukkan Password" 
-              ng-model="angCtrl.inputData.password">
-            </div>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-            <div class="alert alert-danger" ng-show="errorMsg">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-                    ×</button>
-                <span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp;{{errorMsg}}
-            </div>
-          
-            <button type="submit" class="btn btn-primary mt-4">Submit</button>
-          </form>
-        <!--  End Form Login  -->
-      </div> 
-      
-     <!--  Mulai Kode Javascript  -->  
-    <script>
-        angular.module('AngularJSLogin', ['ngCookies'])
-            .controller('AngularLoginController', ['$scope', '$http', '$cookies', function ($scope, $http, $cookies) {
-                this.loginForm = function () {
-                    var username = this.inputData.nip;
-                    var user_data = 'user_username=' + this.inputData.nip + '&user_password=' + this.inputData.password;
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="../angular/angular.min.js"></script>
+  <script src="../angular/angular-cookies.js"></script>
+  <title>Admin Perumahan</title>
+</head>
 
-                    $http({
-                        method: 'POST',
-                        url: '../auth/admin/login.php',
-                        data: user_data,
-                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-                    })
-                        .then(function (response) {
-                            console.log(response);
-                            if ((response.data).trim() === 'correct') {
-                                $cookies.put('cookieval', username);
-                                window.location.href = 'home.html';
-                            } else {
-                                $scope.errorMsg = "Invalid Username and Password";
-                            }
-                        })
-                }
+<body ng-app="AngularJSLogin" ng-controller="AngularLoginController as angCtrl">
+  <div class="container mt-4 ">
+    <!--  Start Form Login  -->
+    <form name="login" ng-submit="angCtrl.loginForm()" class="form-horizontal" method="POST">
+      <div class="form-group">
+        <label for="InputNIP">NIP</label>
+        <input type="text" class="form-control" id="inputNIP" placeholder="Masukkan NIP"
+          ng-model="angCtrl.inputData.nip">
+      </div>
+      <div class="form-group">
+        <label for="InputPassword">Password</label>
+        <input type="password" class="form-control" id="inputPassword" placeholder="Masukkan Password"
+          ng-model="angCtrl.inputData.password">
+      </div>
 
-            }]);
-    </script>
-     <!--  Akhirt Kode Javascript  -->  
-  </body>
+      <div class="alert alert-danger" ng-show="errorMsg">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+          ×</button>
+        <span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp;{{errorMsg}}
+      </div>
+
+      <button type="submit" class="btn btn-primary mt-4">Submit</button>
+    </form>
+    <!--  End Form Login  -->
+  </div>
+
+  <!--  Mulai Kode Javascript  -->
+  <script>
+    angular.module('AngularJSLogin', ['ngCookies'])
+      .controller('AngularLoginController', ['$scope', '$http', '$cookies', function ($scope, $http, $cookies) {
+        this.loginForm = function () {
+          var username = this.inputData.nip;
+          var user_data = 'user_username=' + this.inputData.nip + '&user_password=' + this.inputData.password;
+
+          $http({
+            method: 'POST',
+            url: '../auth/admin/login.php',
+            data: user_data,
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+          })
+            .then(function (response) {
+              console.log(response);
+              if ((response.data).trim() === 'correct') {
+                $cookies.put('cookieval', username);
+                window.location.href = 'home.html';
+              } else {
+                $scope.errorMsg = "Invalid Username and Password";
+              }
+            })
+        }
+
+      }]);
+  </script>
+  <!--  Akhirt Kode Javascript  -->
+</body>
+
 </html>
