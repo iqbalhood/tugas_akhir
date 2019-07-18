@@ -11,23 +11,58 @@
     <script src="../angular/angular-cookies.js"></script>
     <title>Admin Perumahan</title> 
   </head>
-  <body>
+  <body ng-app="AngularJSLogin" ng-controller="AngularLoginController as angCtrl">
       <div class="container mt-4 ">
         <!--  Start Form Login  -->
-        <form>
+        <form name="login" ng-submit="angCtrl.loginForm()" class="form-horizontal" method="POST">
             <div class="form-group">
-              <label for="exampleInputEmail1">NIP</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan NIP">
-              
+              <label for="InputNIP">NIP</label>
+              <input type="text"  class="form-control" id="inputNIP" placeholder="Masukkan NIP" ng-model="angCtrl.inputData.nip">      
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Masukkan Password">
+              <label for="InputPassword">Password</label>
+              <input type="password" class="form-control" id="inputPassword" placeholder="Masukkan Password" 
+              ng-model="angCtrl.inputData.password">
+            </div>
+
+            <div class="alert alert-danger" ng-show="errorMsg">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                    ×</button>
+                <span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp;{{errorMsg}}
             </div>
           
             <button type="submit" class="btn btn-primary mt-4">Submit</button>
           </form>
         <!--  End Form Login  -->
-      </div>    
+      </div> 
+      
+     <!--  Mulai Kode Javascript  -->  
+    <script>
+        angular.module('AngularJSLogin', ['ngCookies'])
+            .controller('AngularLoginController', ['$scope', '$http', '$cookies', function ($scope, $http, $cookies) {
+                this.loginForm = function () {
+                    var username = this.inputData.nip;
+                    var user_data = 'user_username=' + this.inputData.nip + '&user_password=' + this.inputData.password;
+
+                    $http({
+                        method: 'POST',
+                        url: '../auth/admin/login.php',
+                        data: user_data,
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                    })
+                        .then(function (response) {
+                            console.log(response);
+                            if ((response.data).trim() === 'correct') {
+                                $cookies.put('cookieval', username);
+                                window.location.href = 'home.html';
+                            } else {
+                                $scope.errorMsg = "Invalid Username and Password";
+                            }
+                        })
+                }
+
+            }]);
+    </script>
+     <!--  Akhirt Kode Javascript  -->  
   </body>
 </html>
