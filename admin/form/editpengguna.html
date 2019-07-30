@@ -1,0 +1,165 @@
+<div class="card">
+    <div class="card-body">
+        <form class="form-sample">
+            <input type="hidden" class="form-control" ng-model="nip">
+            <div class="col-md-12">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Nama Lengkap Pengguna</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" ng-model="nama" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Jenis Kelamin</label>
+                    <div class="col-sm-9">
+                        <div class="col-sm-12">
+                            <div class="col-sm-6">
+                                <div class="form-radio">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="optionsRadios" name='jenis_kelamin'
+                                            ng-model="jenis_kelamin" value='L'> Laki Laki
+                                        <i class="input-helper"></i>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-radio">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="optionsRadios" name='jenis_kelamin'
+                                            ng-model="jenis_kelamin" value='P'> Perempuan
+                                        <i class="input-helper"></i>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="col-md-12">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Level / Divisi Pengguna</label>
+                    <div class="col-sm-9">
+                        <select name="level" ng-model="level" class="col-sm-12 form-control">
+                            <option value="">- none -</option>
+                            <option value="1">Administrator</option>
+                            <option value="2">Akademik</option>
+                            <option value="3">Kaprodi</option>
+                            <option value="4">Keuangan</option>
+                            <option value="5">SDM</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Password</label>
+                    <div class="col-sm-9">
+                        <input type="password" class="form-control" ng-model="password" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Alamat</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" ng-model="alamat" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Telepon</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" ng-model="telpon" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Tempat Lahir</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" ng-model="tempat_lahir" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Tanggal Lahir</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" ng-model="tanggal_lahir" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Status</label>
+                    <div class="col-sm-9">
+                        <div class="col-sm-12">
+                            <div class="col-sm-6">
+                                <div class="form-radio">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="optionStatus" name='status'
+                                            ng-model="status" value='aktif'>Aktif
+                                        <i class="input-helper"></i>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-radio">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="optionStatus" name='status'
+                                            ng-model="status" value='tidak'>Tidak Aktif
+                                        <i class="input-helper"></i>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-12">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Blokir</label>
+                    <div class="col-sm-9">
+                        <div class="col-sm-12">
+                            <div class="col-sm-6">
+                                <div class="form-radio">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="optionBlokir" name='blokir'
+                                            ng-model="blokir" value='Y'>Ya
+                                        <i class="input-helper"></i>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-radio">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="optionBlokir" name='blokir'
+                                            ng-model="blokir" value='N'>Tidak
+                                        <i class="input-helper"></i>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

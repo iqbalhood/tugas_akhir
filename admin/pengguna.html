@@ -1,0 +1,56 @@
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Pengguna</h4>
+        <p class="card-description">
+            <button type="button" class="btn btn-success btn-fw" ng-click="addPengguna()">Tambah Pengguna</button>
+        </p>
+
+        
+
+
+        <div class="row">
+            <div class="col-12">
+                <table id="order-listing" class="table" datatable="ng" dt-options="dtOptions" dt-columns="dtColumns">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Nip</th>
+                            <th>Nama Lengkap</th>
+                            <th>Level</th>
+                            <th>Status</th>
+                            <th>Foto Admin</th>
+                            <th>Blokir</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="x in myData">
+                            <td>{{ $index + 1 }}</td>
+                            <td> {{ x.nip }}</td>
+                            <td> {{ x.nama }}</td>
+                            <td>
+                                <span ng-if="x.level == '1'">Administrator</span>
+                                <span ng-if="x.level == '2'">Akademik</span>
+                                <span ng-if="x.level == '3'">Kaprodi</span>
+                                <span ng-if="x.level == '4'">Keuangan</span>
+                                <span ng-if="x.level == '5'">SDM</span>
+                            </td>
+                            <td>
+                                {{x.status}}
+                            </td>
+                            <td> <a href="#!/pengguna-foto/{{x.nip}}"><label class="badge badge-success"><i class="icon-help menu-icon"></i>
+                                        Setting Foto</label></a></td>
+
+                            <td> {{ x.blokir }}</td>
+                            <td>
+                                <label class="badge badge-warning" ng-click="editPengguna(x)">Edit</label>
+                                <label class="badge badge-danger" ng-click="deletePengguna(x)">Delete</label>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
