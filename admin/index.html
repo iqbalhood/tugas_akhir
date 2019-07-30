@@ -9,36 +9,25 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/signin.css">
   <script src="../angular/angular.min.js"></script>
   <script src="../angular/angular-cookies.js"></script>
   <title>Admin Perumahan</title>
 </head>
 
 <body ng-app="AngularJSLogin" ng-controller="AngularLoginController as angCtrl">
-  <div class="container mt-4 ">
-    <!--  Start Form Login  -->
-    <form name="login" ng-submit="angCtrl.loginForm()" class="form-horizontal" method="POST">
-      <div class="form-group">
-        <label for="InputNIP">NIP</label>
-        <input type="text" class="form-control" id="inputNIP" placeholder="Masukkan NIP"
-          ng-model="angCtrl.inputData.nip">
-      </div>
-      <div class="form-group">
-        <label for="InputPassword">Password</label>
-        <input type="password" class="form-control" id="inputPassword" placeholder="Masukkan Password"
-          ng-model="angCtrl.inputData.password">
-      </div>
-
-      <div class="alert alert-danger" ng-show="errorMsg">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-          ×</button>
-        <span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp;{{errorMsg}}
-      </div>
-
-      <button type="submit" class="btn btn-primary mt-4">Submit</button>
-    </form>
-    <!--  End Form Login  -->
-  </div>
+  <form name="login" ng-submit="angCtrl.loginForm()" class="form-signin form-horizontal" method="POST">
+    <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input type="text" class="form-control" id="inputNIP" placeholder="Masukkan NIP"
+    ng-model="angCtrl.inputData.nip">
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" class="form-control" id="inputPassword" placeholder="Masukkan Password"
+    ng-model="angCtrl.inputData.password">
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2019</p>
+  </form>
 
   <!--  Mulai Kode Javascript  -->
   <script>

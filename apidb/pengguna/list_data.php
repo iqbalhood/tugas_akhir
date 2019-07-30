@@ -2,23 +2,20 @@
 /*
  * kode untuk tampilak semua fakultas, pada halaman fakultass
  */
+require '../connect.php';
 $response = array();
-
-// include db connect class
-require_once '../../config/db_connect.php';
-
-// ckonekin ke db
-$db = new DB_CONNECT();
+$connect = connect();
 	 
 	//  get by event
-	$result = mysql_query("SELECT * FROM pengguna ORDER BY nip ") or die(mysql_error());
+	$sql = "SELECT * FROM pengguna ORDER BY nip ";
+	$result = mysqli_query($connect,$sql);
 		// cek
-		if (mysql_num_rows($result) > 0) {
+		if (mysqli_num_rows($result) > 0) {
 		    // looping hasil
 		    // event node
             $response["event"] = array();
       
-	     while ($row = mysql_fetch_array($result)) {
+	     while ($row = mysqli_fetch_array($result)) {
 			$event 							    = array();			
 			$event["nip"] 				        = $row["nip"];
 			$event["nama"] 			            = $row["nama"];
